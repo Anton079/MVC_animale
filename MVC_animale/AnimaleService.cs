@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,7 +35,7 @@ namespace MVC_animale
             animal3.inaltime = 3;
             animal3.greutate = 10;
             animal3.culoare = "Alb";
-            animal3.tipAnimal = "Urs Polar";
+            animal3.tipAnimal = "Lup Polar";
             animal3.varsta = 12;
 
             Animale animal4 = new Animale();
@@ -57,7 +59,7 @@ namespace MVC_animale
             animal6.inaltime = 4;
             animal6.greutate = 1;
             animal6.culoare = "Negru";
-            animal6.tipAnimal = "Urs";
+            animal6.tipAnimal = "Lup";
             animal6.varsta = 19;
 
 
@@ -77,6 +79,7 @@ namespace MVC_animale
                 Console.WriteLine(x.AnimaleInfo());
             }
         }
+
 
         //functie pentru afisarea animalului cu varsta ce-a mai mare
         public Animale FindAnimalVarstaMaxima()
@@ -108,5 +111,94 @@ namespace MVC_animale
             }
             return animList;
         }
+
+
+        //functie pentru sortarea animalelor dupa inaltime
+        public void SortAnimaleByHigh()
+        {
+           
+            //i=0   j=1 i=0 
+            for(int i = 0;  i < AnimaleList.Count; i++)
+            {
+                for(int j=i+1;j < AnimaleList.Count; j++)
+                {
+                    if (AnimaleList[i].inaltime > AnimaleList[j].inaltime)
+                    {
+
+                        Animale aux = AnimaleList[i];
+                        AnimaleList[i] = AnimaleList[j];
+                        AnimaleList[j] = aux;
+
+
+                    }
+                }
+            }
+           
+
+        }
+
+        //todo verifica daca obiectul se afla in lista
+        public  bool EraseAnimalByName(string numeAnimal)
+        {
+
+            int index = FindAnimalPositionByName(numeAnimal);
+
+
+            if(index != -1)
+            {
+                AnimaleList.RemoveAt(index);
+
+                return true;
+            }
+
+            return false;
+        
+        }
+
+        //todo functie ce primeste ca parametru numele animalului si returneaza pozitia din linsta
+        public int FindAnimalPositionByName(string numeAnimal)
+        {
+           
+            for(int i = 0; i < AnimaleList.Count; i++)
+            {
+                if (AnimaleList[i].tipAnimal.Equals(numeAnimal))
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+        //todo functie ce adauga un animal UNIC in lista
+        public bool AddAnimalinList (Animale numeAnimal)
+        {
+            if (FindAnimalPositionByName(numeAnimal.tipAnimal)==-1)
+            {
+                
+                this.AnimaleList.Add(numeAnimal);
+                return true;
+            }
+            return false;
+        }
+
+
+        //todo: functie de editatare varsta animal
+        public bool EditAnimalAge(int varsta)
+        {
+            foreach(Animale x in AnimaleList)
+            {
+                if (x.varsta == )
+                {
+                    varsta = x.varsta;
+                    return = x.varsta;
+                }
+            }
+
+            return false;
+        }
+
+
+
     }
 }
