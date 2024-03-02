@@ -183,20 +183,42 @@ namespace MVC_animale
         }
 
 
+
+
+        //FUNCTII CRUD
+
         //todo: functie de editatare varsta animal
-        public bool EditAnimalAge(int varsta)
+        public bool EditAnimalAge(string animal ,int varsta)
         {
             foreach(Animale x in AnimaleList)
             {
-                if (x.varsta == )
+                if(x.tipAnimal == animal)
                 {
-                    varsta = x.varsta;
-                    return = x.varsta;
+                    x.varsta = varsta;
+                    return true;
                 }
             }
+            
 
             return false;
         }
+
+
+        public bool EditAnimalHigh(int inaltime, string animal)
+        {
+            foreach (Animale x in AnimaleList)
+            {
+                if (x.tipAnimal == animal)
+                {
+                    x.inaltime = inaltime;
+                    return true;
+                }
+
+            }
+            return false;
+        }
+
+        //CRUD  functionalities   create read update delete 
 
 
 
