@@ -220,7 +220,37 @@ namespace MVC_animale
 
         //CRUD  functionalities   create read update delete 
 
+        public int FindAnimalByTipAnimal(string animalCautat)
+        {
+            for(int i = 0; i < AnimaleList.Count; i++)
+            {
+                if (AnimaleList[i].tipAnimal.Equals(animalCautat))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
 
+        public bool AddMasinaInList(Animale animalNou)
+        {
+            if (FindAnimalByTipAnimal(animalNou.tipAnimal) == -1)
+            {
+                this.AnimaleList.Add(animalNou);
+                return true;
+            }
+            return false;
+        }
 
+        public bool RemoveAnimalByTipAnimal(string AnimalCauatat)
+        {
+            int AnimCautat = FindAnimalByTipAnimal(AnimalCauatat);
+            if(AnimCautat != -1)
+            {
+                AnimaleList.RemoveAt(AnimCautat);
+                return true;
+            }
+            return false;
+        }
     }
 }
