@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -251,6 +252,25 @@ namespace MVC_animale
                 return true;
             }
             return false;
+        }
+
+        //VIEW
+        public void AfisareaAnimalelorGrele()
+        {
+            for(int i = 0;i < AnimaleList.Count; i++)
+            {
+                if (AnimaleList[i].greutate >= 3)
+                {
+                    Console.WriteLine(i);
+                }
+            }
+        }
+
+        public string AdoptareaUnuiAnimal(string animalDorit)
+        {
+            int poz = FindAnimalByTipAnimal(animalDorit);
+            
+           return
         }
     }
 }

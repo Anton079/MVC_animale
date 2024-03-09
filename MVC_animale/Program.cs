@@ -1,4 +1,5 @@
 ﻿using MVC_animale;
+using System.ComponentModel.Design;
 
 internal class Program
 {
@@ -8,11 +9,7 @@ internal class Program
         AnimaleService service = new AnimaleService();
 
         service.LoadData();
-
-      
-
-
-        Console.WriteLine("++++++---------------");
+        View view = new View();
 
 
         Animale Animal7 = new Animale();
@@ -25,12 +22,8 @@ internal class Program
 
         bool t = service.AddAnimalinList(Animal7);
 
+        view.Play();
 
-      
-        Console.WriteLine(t);
-
-
-        service.AfisareAnimale();
 
     }
 }
