@@ -8,19 +8,10 @@ internal class Program
 
         AnimaleService service = new AnimaleService();
 
-        service.LoadData();
         View view = new View();
+        service.LoadData();
 
 
-        Animale Animal7 = new Animale();
-        Animal7.varsta = 7;
-        Animal7.latime = 2;
-        Animal7.inaltime= 3;
-        Animal7.culoare = "Albastru";
-        Animal7.tipAnimal = "Peste";
-        Animal7.greutate = 10;
-
-        bool t = service.AddAnimalinList(Animal7);
 
         view.Play();
 
