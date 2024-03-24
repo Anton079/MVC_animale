@@ -9,7 +9,12 @@ namespace MVC_animale
     public class View
     {
 
-        AnimaleService animaleService = new AnimaleService();
+        private AnimaleService _animaleService;
+
+        public View()
+        {
+            _animaleService = new AnimaleService();
+        }
 
         public void Meniu()
         {
@@ -29,11 +34,12 @@ namespace MVC_animale
 
 
         }
+
         public void Play()
         {
             bool running = true;
 
-            animaleService.LoadData();
+            _animaleService.LoadData();
             while (running)
             {
                 Meniu();
@@ -42,11 +48,11 @@ namespace MVC_animale
                 switch (alegere)
                 {
                     case "1":
-                        animaleService.AfisareAnimale();
+                        _animaleService.AfisareAnimale();
                         break;
 
                     case "2":
-                        animaleService.AfisareaAnimalelorGrele();
+                        _animaleService.AfisareaAnimalelorGrele();
                         break;
 
                     case "3":
@@ -97,13 +103,13 @@ namespace MVC_animale
             Console.WriteLine("Introduceti animalul dorit din lista de mai jos in text");
             string animalDorit = Console.ReadLine();
 
-            animaleService.AdoptareaUnuiAnimal(animalDorit);
+            _animaleService.AdoptareaUnuiAnimal(animalDorit);
 
         }
 
         public void AdaugareaUnuiAnimal()
         {
-            Console.WriteLine("Inaltimea cainelui");
+            Console.WriteLine("Inaltimea animalului");
             int inaltimeNou = Int32.Parse(Console.ReadLine());
 
             Console.WriteLine("Tipul de animal");
@@ -122,12 +128,12 @@ namespace MVC_animale
             int varstaNou = Int32.Parse(Console.ReadLine());
 
             Animale animal7 = new Animale();
-            animal7.inaltime = inaltimeNou;
-            animal7.tipAnimal = animalNou;
-            animal7.culoare = culoareNou;
-            animal7.greutate = greutateNou;
-            animal7.latime = latimeNou;
-            animal7.varsta = varstaNou;
+            animal7.Inaltime = inaltimeNou;
+            animal7.TipAnimal = animalNou;
+            animal7.Culoare = culoareNou;
+            animal7.Greutate = greutateNou;
+            animal7.Latime = latimeNou;
+            animal7.Varsta = varstaNou;
 
             Console.WriteLine("Animalul a fost adaugat cu succes");
         }
@@ -135,12 +141,12 @@ namespace MVC_animale
         public void StergereaUnuiAnimalului()
         {
             Console.WriteLine("Din lista de mai jos ce animal doiriti sa stergeti");
-            animaleService.AfisareAnimale();
+            _animaleService.AfisareAnimale();
             string AnimaleDorite = Console.ReadLine();
 
-            if (animaleService.FindAnimalByTipAnimal(AnimaleDorite) != -1)
+            if (_animaleService.FindAnimalByTipAnimal(AnimaleDorite) != -1)
             {
-                animaleService.RemoveAnimalByTipAnimal(AnimaleDorite);
+                _animaleService.RemoveAnimalByTipAnimal(AnimaleDorite);
                 Console.WriteLine("Animalul a fost sters!");
             }
             else
@@ -159,7 +165,7 @@ namespace MVC_animale
             Console.WriteLine("Cu ce varsta vreti sa ii modificati?");
             int newAge = Int32.Parse(Console.ReadLine());
 
-            if(animaleService.EditAnimalAge(animalNewAge, newAge))
+            if(_animaleService.EditAnimalAge(animalNewAge, newAge))
             {
                 Console.WriteLine("Varsta animalului a fost modificata cu succes!");
             }
@@ -177,7 +183,7 @@ namespace MVC_animale
             Console.WriteLine("Cu ce inaltime doriti sa modificati animalul");
             int animalNewHigh = Int32.Parse(Console.ReadLine());
 
-            if(animaleService.EditAnimalHigh(animalNewHigh, wantedAnimal))
+            if(_animaleService.EditAnimalHigh(animalNewHigh, wantedAnimal))
             {
                 Console.WriteLine("Animalul a fost editat cu succes");
             }
@@ -195,7 +201,7 @@ namespace MVC_animale
             Console.WriteLine("Ce culoare vrei sa modifici la animal?");
             string newCuloare = Console.ReadLine();
 
-            if(animaleService.EditAnimalColour(newCuloare, wantedAnimal))
+            if(_animaleService.EditAnimalColour(newCuloare, wantedAnimal))
             {
                 Console.WriteLine("Animalul a fost editat cu succes");
             }
@@ -213,7 +219,7 @@ namespace MVC_animale
             Console.WriteLine("Cu ce latime vreti sa modifi animalul");
             int newLatime = Int32.Parse(Console.ReadLine());
 
-            if(animaleService.EditAnimalLatie(wantedAnimal, newLatime))
+            if(_animaleService.EditAnimalLatie(wantedAnimal, newLatime))
             {
                 Console.WriteLine("Animalul a fost modificat cu succes");
             }
@@ -231,7 +237,7 @@ namespace MVC_animale
             Console.WriteLine("Cu ce greutate doriti sa modificati la animal");
             int newGreutate = Int32.Parse(Console.ReadLine());
 
-            if(animaleService.EditAnimalGreutate(wantedAnimal, newGreutate))
+            if(_animaleService.EditAnimalGreutate(wantedAnimal, newGreutate))
             {
                 Console.WriteLine("Modificarea a reusit");
             }
@@ -248,9 +254,14 @@ namespace MVC_animale
             Console.WriteLine("Ce tip de animale cautati");
             string wantedAnimal= Console.ReadLine();
 
-            if(animaleService.FiltrareTipAnimale(wantedAnimal))
+            List<Animale> list = _animaleService.FiltrareTipAnimale(wantedAnimal);
+
+            if (list.Count>0)
             {
-                Console.WriteLine($"Animalele de acelasi tip:");
+                for(int i = 0;i < list.Count; i++)
+                {
+                    Console.WriteLine($"Uitati lista cu animale pe care o doriti:{list[i].AnimaleInfo()}");
+                }              
             }
             else
             {

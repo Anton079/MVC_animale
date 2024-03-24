@@ -11,88 +11,94 @@ namespace MVC_animale
 {
     public class AnimaleService
     {
-        public List<Animale> AnimaleList = new List<Animale>();
+        private List<Animale> _AnimaleList;
+
+        public AnimaleService()
+        {
+            _AnimaleList  = new List<Animale>();
+            this.LoadData();
+        }
 
         public void LoadData()
         {
             Animale animal1 = new Animale();
-            animal1.inaltime = 2;
-            animal1.latime = 2;
-            animal1.culoare = "Negru";
-            animal1.greutate = 10;
-            animal1.tipAnimal = "Leu";
-            animal1.varsta = 11;
+            animal1.Inaltime = 2;
+            animal1.Latime = 2;
+            animal1.Culoare = "Negru";
+            animal1.Greutate = 10;
+            animal1.TipAnimal = "Leu";
+            animal1.Varsta = 11;
             
             Animale animal2 = new Animale();
-            animal2.latime = 3;
-            animal2.inaltime = 4;
-            animal2.greutate = 5;
-            animal2.culoare = "Verde";
-            animal2.tipAnimal = "Urs";
-            animal2.varsta = 6;
+            animal2.Latime = 3;
+            animal2.Inaltime = 4;
+            animal2.Greutate = 5;
+            animal2.Culoare = "Verde";
+            animal2.TipAnimal = "Urs";
+            animal2.Varsta = 6;
 
             Animale animal3 = new Animale();
-            animal3.latime = 4;
-            animal3.inaltime = 3;
-            animal3.greutate = 15;
-            animal3.culoare = "Alb";
-            animal3.tipAnimal = "Lup Polar";
-            animal3.varsta = 12;
+            animal3.Inaltime = 4;
+            animal3.Latime = 3;
+            animal3.Greutate = 15;
+            animal3.Culoare = "Alb";
+            animal3.TipAnimal = "Lup Polar";
+            animal3.Varsta = 12;
 
             Animale animal4 = new Animale();
-            animal4.latime = 7;
-            animal4.inaltime = 10;
-            animal4.greutate = 3;
-            animal4.culoare = "Albastru";
-            animal4.tipAnimal = "Caine";
-            animal4.varsta = 15;
+            animal4.Inaltime = 7;
+            animal4.Latime = 10;
+            animal4.Greutate = 3;
+            animal4.Culoare = "Albastru";
+            animal4.TipAnimal = "Caine";
+            animal4.Varsta = 15;
 
             Animale animal5 = new Animale();
-            animal5.latime = 1;
-            animal5.inaltime = 2;
-            animal5.greutate = 1;
-            animal5.culoare = "Maro";
-            animal5.tipAnimal = "Hamster";
-            animal5.varsta = 20;
+            animal5.Inaltime = 1;
+            animal5.Latime = 2;
+            animal5.Greutate = 1;
+            animal5.Culoare = "Maro";
+            animal5.TipAnimal = "Hamster";
+            animal5.Varsta = 20;
 
             Animale animal6 = new Animale();
-            animal6.latime = 3;
-            animal6.inaltime = 4;
-            animal6.greutate = 1;
-            animal6.culoare = "Negru";
-            animal6.tipAnimal = "Lup";
-            animal6.varsta = 19;
+            animal6.Inaltime = 3;
+            animal6.Latime = 4;
+            animal6.Greutate = 1;
+            animal6.Culoare = "Negru";
+            animal6.TipAnimal = "Lup";
+            animal6.Varsta = 19;
 
             Animale animal7 = new Animale();
-            animal1.inaltime = 5;
-            animal1.latime = 32;
-            animal1.culoare = "Galben";
-            animal1.greutate = 10;
-            animal1.tipAnimal = "Leu";
-            animal1.varsta = 17;
+            animal7.Inaltime = 5;
+            animal7.Latime = 32;
+            animal7.Culoare = "Galben";
+            animal7.Greutate = 10;
+            animal7.TipAnimal = "Leu";
+            animal7.Varsta = 17;
 
             Animale animal8 = new Animale();
-            animal1.inaltime = 61;
-            animal1.latime = 61;
-            animal1.culoare = "Verde";
-            animal1.greutate = 423;
-            animal1.tipAnimal = "Leu";
-            animal1.varsta = 5474;
+            animal8.Inaltime = 61;
+            animal8.Latime = 61;
+            animal8.Culoare = "Verde";
+            animal8.Greutate = 423;
+            animal8.TipAnimal = "Leu";
+            animal8.Varsta = 5474;
 
-            this.AnimaleList.Add(animal1);
-            this.AnimaleList.Add(animal2);
-            this.AnimaleList.Add(animal3);
-            this.AnimaleList.Add(animal4);
-            this.AnimaleList.Add(animal5);
-            this.AnimaleList.Add(animal6);
-            this.AnimaleList.Add(animal7);
-            this.AnimaleList.Add(animal8);
+            this._AnimaleList.Add(animal1);
+            this._AnimaleList.Add(animal2);
+            this._AnimaleList.Add(animal3);
+            this._AnimaleList.Add(animal4);
+            this._AnimaleList.Add(animal5);
+            this._AnimaleList.Add(animal6);
+            this._AnimaleList.Add(animal7);
+            this._AnimaleList.Add(animal8);
             
         }
 
         public void AfisareAnimale()
         {
-            foreach(Animale x in AnimaleList)
+            foreach(Animale x in _AnimaleList)
             {
                 Console.WriteLine(x.AnimaleInfo());
             }
@@ -103,12 +109,12 @@ namespace MVC_animale
         public Animale FindAnimalVarstaMaxima()
         {
             int varstaMaxima = 0;
-            Animale tipAnimal = AnimaleList[0];
-            foreach(Animale x in AnimaleList)
+            Animale tipAnimal = _AnimaleList[0];
+            foreach(Animale x in _AnimaleList)
             {
-                if(x.varsta > varstaMaxima)
+                if(x.Varsta > varstaMaxima)
                 {
-                    varstaMaxima = x.varsta;
+                    varstaMaxima = x.Varsta;
                     tipAnimal = x;
                 }
             }
@@ -120,9 +126,9 @@ namespace MVC_animale
         {
             List<Animale> animList = new List<Animale>();
              
-            foreach(Animale x in AnimaleList)
+            foreach(Animale x in _AnimaleList)
             {
-                if(Leu.Equals(x.tipAnimal))
+                if(Leu.Equals(x.TipAnimal))
                 {
                     animList.Add(x);
                 }
@@ -136,16 +142,16 @@ namespace MVC_animale
         {
            
             //i=0   j=1 i=0 
-            for(int i = 0;  i < AnimaleList.Count; i++)
+            for(int i = 0;  i < _AnimaleList.Count; i++)
             {
-                for(int j=i+1;j < AnimaleList.Count; j++)
+                for(int j=i+1;j < _AnimaleList.Count; j++)
                 {
-                    if (AnimaleList[i].inaltime > AnimaleList[j].inaltime)
+                    if (_AnimaleList[i].Inaltime > _AnimaleList[j].Inaltime)
                     {
 
-                        Animale aux = AnimaleList[i];
-                        AnimaleList[i] = AnimaleList[j];
-                        AnimaleList[j] = aux;
+                        Animale aux = _AnimaleList[i];
+                        _AnimaleList[i] = _AnimaleList[j];
+                        _AnimaleList[j] = aux;
 
 
                     }
@@ -164,7 +170,7 @@ namespace MVC_animale
 
             if(index != -1)
             {
-                AnimaleList.RemoveAt(index);
+                _AnimaleList.RemoveAt(index);
 
                 return true;
             }
@@ -177,9 +183,9 @@ namespace MVC_animale
         public int FindAnimalPositionByName(string numeAnimal)
         {
            
-            for(int i = 0; i < AnimaleList.Count; i++)
+            for(int i = 0; i < _AnimaleList.Count; i++)
             {
-                if (AnimaleList[i].tipAnimal.Equals(numeAnimal))
+                if (_AnimaleList[i].TipAnimal.Equals(numeAnimal))
                 {
                     return i;
                 }
@@ -196,11 +202,11 @@ namespace MVC_animale
         //todo: functie de editatare varsta animal
         public bool EditAnimalAge(string animal ,int varsta)
         {
-            foreach(Animale x in AnimaleList)
+            foreach(Animale x in _AnimaleList)
             {
-                if(x.tipAnimal == animal)
+                if(x.TipAnimal == animal)
                 {
-                    x.varsta = varsta;
+                    x.Varsta = varsta;
                     return true;
                 }
             }
@@ -211,11 +217,11 @@ namespace MVC_animale
 
         public bool EditAnimalHigh(int inaltime, string animal)
         {
-            foreach (Animale x in AnimaleList)
+            foreach (Animale x in _AnimaleList)
             {
-                if (x.tipAnimal == animal)
+                if (x.TipAnimal == animal)
                 {
-                    x.inaltime = inaltime;
+                    x.Inaltime = inaltime;
                     return true;
                 }
 
@@ -228,9 +234,9 @@ namespace MVC_animale
 
         public int FindAnimalByTipAnimal(string animalCautat)
         {
-            for(int i = 0; i < AnimaleList.Count; i++)
+            for(int i = 0; i < _AnimaleList.Count; i++)
             {
-                if (AnimaleList[i].tipAnimal.Equals(animalCautat))
+                if (_AnimaleList[i].TipAnimal.Equals(animalCautat))
                 {
                     return i;
                 }
@@ -240,9 +246,9 @@ namespace MVC_animale
 
         public bool AddAnimalInList(Animale animalNou)
         {
-            if (FindAnimalByTipAnimal(animalNou.tipAnimal) == -1)
+            if (FindAnimalByTipAnimal(animalNou.TipAnimal) == -1)
             {
-                this.AnimaleList.Add(animalNou);
+                this._AnimaleList.Add(animalNou);
                 return true;
             }
             return false;
@@ -253,7 +259,7 @@ namespace MVC_animale
             int AnimCautat = FindAnimalByTipAnimal(AnimalCauatat);
             if(AnimCautat != -1)
             {
-                AnimaleList.RemoveAt(AnimCautat);
+                _AnimaleList.RemoveAt(AnimCautat);
                 return true;
             }
             return false;
@@ -262,11 +268,11 @@ namespace MVC_animale
         //VIEW
         public void AfisareaAnimalelorGrele()
         {
-            for(int i = 0;i < AnimaleList.Count; i++)
+            for(int i = 0;i < _AnimaleList.Count; i++)
             {
-                if (AnimaleList[i].greutate >= 12)
+                if (_AnimaleList[i].Greutate >= 12)
                 {
-                    Console.WriteLine(AnimaleList[i].tipAnimal);
+                    Console.WriteLine(_AnimaleList[i].TipAnimal);
                 }
             }
         }
@@ -277,7 +283,7 @@ namespace MVC_animale
 
             if(poz != -1)
             {
-                AnimaleList.RemoveAt(poz);
+                _AnimaleList.RemoveAt(poz);
                 return true;
             }
             return false;
@@ -285,11 +291,11 @@ namespace MVC_animale
 
         public bool AdaugareaUnuiAnimal(Animale animal7)
         {
-            for(int i = 0; i < AnimaleList.Count; i++)
+            for(int i = 0; i < _AnimaleList.Count; i++)
             {
-                if (!AnimaleList[i].Equals(animal7.tipAnimal))
+                if (!_AnimaleList[i].Equals(animal7.TipAnimal))
                 {
-                    this.AnimaleList.Add(animal7);
+                    this._AnimaleList.Add(animal7);
                     return true;
                 }
             }
@@ -299,11 +305,11 @@ namespace MVC_animale
         //EDIT ANIMALE
         public bool EditAnimalColour(string animal , string culoare)
         {
-            foreach (Animale x in AnimaleList)
+            foreach (Animale x in _AnimaleList)
             {
-                if(x.tipAnimal == animal)
+                if(x.TipAnimal == animal)
                 {
-                    x.culoare = culoare;
+                    x.Culoare = culoare;
                     return true;
                 }
             }
@@ -312,11 +318,11 @@ namespace MVC_animale
 
         public bool EditAnimalLatie(string animal, int latime)
         {
-            foreach(Animale x in AnimaleList)
+            foreach(Animale x in _AnimaleList)
             {
-                if (x.tipAnimal.Equals(animal))
+                if (x.TipAnimal.Equals(animal))
                 {
-                    x.latime = latime;
+                    x.Latime = latime;
                     return true;
                 }
             }
@@ -325,11 +331,11 @@ namespace MVC_animale
 
         public bool EditAnimalGreutate(string animal, int greutate)
         {
-            foreach(Animale x in AnimaleList)
+            foreach(Animale x in _AnimaleList)
             {
-                if(x.tipAnimal == animal)
+                if(x.TipAnimal == animal)
                 {
-                    x.greutate = greutate;
+                    x.Greutate = greutate;
                     return true;
                 }
             }
@@ -341,13 +347,14 @@ namespace MVC_animale
         {
             List <Animale> FiltruAnimaleAsemanatoare = new List<Animale>();
 
-            foreach(Animale x in AnimaleList)
+            for (int i = 0; i < this._AnimaleList.Count; i++)
             {
-                if(x.tipAnimal == animal)
+                if (this._AnimaleList[i].TipAnimal.Equals(animal))
                 {
-                    FiltruAnimaleAsemanatoare.Add(x);
+                    FiltruAnimaleAsemanatoare.Add(_AnimaleList[i]);
                 }
             }
+
             return FiltruAnimaleAsemanatoare;
         }
 
